@@ -1,4 +1,3 @@
-export default function AdminLoginPage() {
   return (
     <main>
       <h1>Admin Giriş</h1>
@@ -21,25 +20,59 @@ export default function AdminLoginPage() {
 
 'use client';
 
-export default function AdminLoginPage() {
+'use client'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { supabase } from '@/lib/supabaseClient'
+
+export default function LoginPage() {
+  const router = useRouter()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    })
+
+    if (error) {
+      setError('Giriş başarısız: ' + error.message)
+    } else {
+      router.push('/admin/dashboard')
+    }
+  }
+
   return (
-    <main style={{ padding: '2rem' }}>
+    <div>
       <h1>Admin Giriş</h1>
-      <form style={{ display: 'flex', flexDirection: 'column', maxWidth: '300px' }}>
+      <form onSubmit={handleLogin}>
         <label>
-          Kullanıcı Adı:
-          <input type="text" name="username" />
+          E-posta:
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </label>
+        <br />
         <label>
           Şifre:
-          <input type="password" name="password" />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </label>
-        <button type="submit" style={{ marginTop: '1rem' }}>
-          Giriş Yap
-        </button>
+        <br />
+        <button type="submit">Giriş Yap</button>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
       </form>
-    </main>
-  );
+    </div>
+  )
 }
 
 
