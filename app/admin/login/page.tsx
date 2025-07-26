@@ -1,3 +1,24 @@
+export default function AdminLoginPage() {
+  return (
+    <main>
+      <h1>Admin Giriş</h1>
+      <form>
+        <label>
+          Kullanıcı Adı:
+          <input type="text" name="username" />
+        </label>
+        <br />
+        <label>
+          Şifre:
+          <input type="password" name="password" />
+        </label>
+        <br />
+        <button type="submit">Giriş Yap</button>
+      </form>
+    </main>
+  );
+}
+
 'use client';
 
 export default function AdminLoginPage() {
