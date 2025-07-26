@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabaseClient';
+import { supabase } from '../../lib/supabaseClient';
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -12,6 +12,7 @@ export default function AdminLoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -27,7 +28,7 @@ export default function AdminLoginPage() {
   return (
     <main style={{ padding: '2rem' }}>
       <h1>Admin Giriş</h1>
-      <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '300px' }}>
+      <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '300px' }}>
         <label>
           E-posta:
           <input
@@ -52,4 +53,3 @@ export default function AdminLoginPage() {
     </main>
   );
 }
-
