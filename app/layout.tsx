@@ -1,3 +1,8 @@
+export const metadata = {
+  title: 'Fantezi Kutusu',
+  description: 'Fantezi Kutusu Ana Sayfa',
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -9,3 +14,4 @@ export default function RootLayout({
     </html>
   );
 }
+
