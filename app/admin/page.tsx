@@ -1,22 +1,13 @@
 'use client';
-
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function Dashboard() {
+export default function AdminPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const isAuth = sessionStorage.getItem('auth');
-    if (!isAuth) {
-      router.push('/admin');
-    }
-  }, []);
+    router.push('/admin/dashboard');
+  }, [router]);
 
-  return (
-    <div>
-      <h3>Admin Dashboard</h3>
-      <p>Buraya ürün girişi, siparişler, bayiler vs. gelecek</p>
-    </div>
-  );
+  return null;
 }
