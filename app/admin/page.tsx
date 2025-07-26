@@ -1,31 +1,22 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 
-export default function AdminLogin() {
+export default function Dashboard() {
   const router = useRouter();
-  const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    if (password === 'admin123') {
-      sessionStorage.setItem('auth', 'true');
-      router.push('/admin/dashboard');
-    } else {
-      alert('Hatalı şifre');
+  useEffect(() => {
+    const isAuth = sessionStorage.getItem('auth');
+    if (!isAuth) {
+      router.push('/admin');
     }
-  };
+  }, []);
 
   return (
     <div>
-      <h3>Yönetici Girişi</h3>
-      <input
-        type="password"
-        placeholder="Şifre"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Giriş</button>
+      <h3>Admin Dashboard</h3>
+      <p>Buraya ürün girişi, siparişler, bayiler vs. gelecek</p>
     </div>
   );
 }

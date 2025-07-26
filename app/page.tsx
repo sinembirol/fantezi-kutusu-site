@@ -1,7 +1,8 @@
-export default function Home() {
+export default function AdminPage() {
   return (
     <main>
-      <h1>Fantezi Kutusu Yayında!</h1>
+      <h1>Admin Paneli</h1>
+      <p>Hoş geldin! Lütfen yönlendirme menüsünden seçim yap.</p>
     </main>
   );
 }
