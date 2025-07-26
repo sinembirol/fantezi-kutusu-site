@@ -1,6 +1,5 @@
 // app/layout.tsx
-import React from 'react'; // BU SATIRI EKLE!
-import './globals.css'; // Bu dosya henüz yoksa silebilirsin
+import React from 'react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
